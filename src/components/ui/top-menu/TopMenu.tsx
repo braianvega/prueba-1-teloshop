@@ -17,17 +17,17 @@ export const TopMenu = () => {
                 <Link
                     className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
                     href={'/category/men'}>
-                    Hombres
+                    Men
                 </Link>
                 <Link
                     className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
                     href={'/category/women'}>
-                    Mujeres
+                    Women
                 </Link>
                 <Link
                     className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
-                    href={'/category/Kid'}>
-                    Niños
+                    href={'/category/kid'}>
+                    Kid
                 </Link>
 
             </div>
@@ -47,7 +47,7 @@ export const TopMenu = () => {
                     </div>
                 </Link>
                 <button className="m-2 p-2 rounded-md transition-all hover:bg-gray-100">
-                    Menú
+                    Menu
                 </button>
             </div>
 
