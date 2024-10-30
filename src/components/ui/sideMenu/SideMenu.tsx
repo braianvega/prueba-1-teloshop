@@ -1,5 +1,7 @@
 'use client'
 
+import { useUIStore } from "@/store"
+import clsx from "clsx"
 import Link from "next/link"
 import { BsSearch } from "react-icons/bs"
 import { HiOutlineUsers } from "react-icons/hi2"
@@ -9,23 +11,37 @@ import { MdOutlineCloseFullscreen } from "react-icons/md"
 import { RiUserSettingsLine } from "react-icons/ri"
 
 export const SideMenu = () => {
+
+    const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
+    const closeMenu = useUIStore(state => state.closeSideMenu);
+
+
     return (
         <div>
             {/* Background */}
-            <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30" />
+            {isSideMenuOpen &&
+                (<div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30" />)
+            }
+
 
             {/* Blur */}
-            <div className="fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm" />
 
+            {isSideMenuOpen &&
+                (<div
+                    onClick={closeMenu}
+                    className="fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm" />)
+            }
             {/* SideMenu */}
             <nav
 
-                className="fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300">
+                className={clsx("fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
+                    { "translate-x-full": !isSideMenuOpen }
+                )}>
 
                 <MdOutlineCloseFullscreen
                     className="absolute right-5 top-5 cursor-pointer"
                     size={35}
-                    onClick={() => console.log('click')} />
+                    onClick={() => closeMenu()} />
 
 
                 {/* Input */}
